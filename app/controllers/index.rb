@@ -9,12 +9,11 @@ get '/workouts' do
   erb :index
 end
 get '/workouts/new' do
-  "Hello World"
   erb :new_workout
 end
 
 get '/workouts/:id' do
-  #probably not something I want
+  erb :workout
 end
 
 #create
@@ -27,11 +26,19 @@ end
 #edit
 
 get '/workouts/:id/edit' do
-
+  @workout = Workout.find(params[:id])
+  erb :edit_workout
 end
 
 post '/workouts/:id' do
 
+  Workout.find(params[:id]).update(
+    date: params[:date];
+    swim: params[:swim],
+    bike: params[:bike],
+    run: params[:run],
+    description: params[:description])
+  redirect '/workouts'
 end
 
 #delete
