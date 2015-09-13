@@ -1,0 +1,20 @@
+<div class='container'>
+  <table>
+    <thead>
+      <td>Date</td>
+      <td>Run</td>
+      <td>Swim</td>
+      <td>Bike</td>
+      <td>Description</td>
+    </thead>
+  <% Workout.all.each do |workout| %>
+    <tr>
+      <td><%= workout.date %></td>
+      <td><%= workout.run %></td>
+      <td><%= workout.swim %></td>
+      <td><%= workout.bike %></td>
+      <td class="description"><%= workout.description %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
