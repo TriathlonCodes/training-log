@@ -1,11 +1,11 @@
 ## read
 get '/' do
-
-  @ordered_workouts = Workout.order(:date)
+  @ordered_workouts = Workout.order(:date) ##not dry
   erb :index
 end
 
 get '/workouts' do
+  @ordered_workouts = Workout.order(:date) ##not dry
   erb :index
 end
 get '/workouts/new' do
@@ -31,9 +31,9 @@ get '/workouts/:id/edit' do
 end
 
 post '/workouts/:id' do
-
+  ##maybe there is a better way? getting errors with :splat
   Workout.find(params[:id]).update(
-    date: params[:date];
+    date: params[:date],
     swim: params[:swim],
     bike: params[:bike],
     run: params[:run],
@@ -43,7 +43,7 @@ end
 
 #delete
 
-post '/workouts/:id' do
-  Workout.where(id: params[:id]).destroy
+get '/workouts/:id/delete' do
+  Workout.find(params[:id]).destroy
   redirect '/'
 end
