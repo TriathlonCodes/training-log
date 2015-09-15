@@ -4,10 +4,6 @@ get '/' do
   erb :index
 end
 
-@ordered_workouts = Workout.order(:date) ##not dry
-  erb :index
-end
-
 get '/workouts' do
   @ordered_workouts = Workout.order(:date) ##not dry
   erb :index
@@ -23,6 +19,8 @@ end
 #create
 
 post '/workouts' do
+  ##to make up for the odd date formating
+  params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
   Workout.create(params)
   redirect '/workouts'
 end
@@ -36,6 +34,8 @@ end
 
 post '/workouts/:id' do
   ##maybe there is a better way? getting errors with :splat
+  # params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
+  params[:date] = params["month"]+"/"+params["day"]+"/"+params["year"]
   Workout.find(params[:id]).update(
     date: params[:date],
     swim: params[:swim],

@@ -1,7 +1,25 @@
 <div class="container">
   <form method="POST" action="/workouts">
     <label for="date">Date: </label>
-    <input name="date" type="date" value=<%= Date.today %>>
+      <label for="month">Month</label>
+  <select name="month">
+    <% (1..12).to_a.each do |month| %>
+      <option value="<%= month %>"><%= month %></option>
+    <% end %>
+  </select>
+  <label for="day">Day</label>
+  <select name="day">
+    <% (1..31).to_a.each do |day| %>
+      <option value="<%= day %>"><%= day %></option>
+    <% end %>
+  </select>
+  <label for="year">Year</label>
+  <select name="year">
+    <% (Date.today.year-5..Date.today.year).to_a.each do |year| %>
+      <option value="<%= year %>"><%= year %></option>
+    <% end %>
+  </select>
+  <label for="swim">Swim</label>
     <br>
     <label for="swim">Swim (meters): </label>
     <input name="swim" type="integer" value=0>

@@ -1,10 +1,6 @@
 <div class='container'>
-<<<<<<< HEAD
-  <table id="full_log">
-=======
   <a href="/workouts/new">Log a workout</a>
-  <table>
->>>>>>> d64045d452f64bc6a52c3dbce355380bd56496cc
+  <table id="full_log">
     <thead>
       <td>Date</td>
       <td>Run</td>
@@ -13,7 +9,7 @@
       <td>Description</td>
     </thead>
   <% Workout.all.each do |workout| %>
-    <tr>
+    <tr id="<%= workout.id %>">
       <td><%= workout.date %></td>
       <td><%= workout.run %></td>
       <td><%= workout.swim %></td>
