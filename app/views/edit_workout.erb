@@ -1,0 +1,21 @@
+<div class="container">
+  <form method="POST" action="/workouts/<%= @workout.id %>">
+    <label for="date">Date: </label>
+    <input name="date" type="date" value=<%= @workout.date %>>
+    <br>
+    <input type="hidden" name="id" value=<%= @workout.id %>>
+    <label for="swim">Swim (meters): </label>
+    <input name="swim" type="integer" value=<%= @workout.swim %>>
+    <label for="bike">Bike (miles): </label>
+    <input name="bike" type="float" value=<%= @workout.bike %>>
+    <br>
+    <label for="run">Run (miles): </label>
+    <input name="run" type="float" value=<%= @workout.run %>>
+    <br>
+    <label for="description">Describe your workout:</label>
+    <br>
+    <input name="description" type="text" value = <%= @workout.description %>>
+    <br>
+    <input type="submit" value="Edit Workout">
+  </form>
+</div>
