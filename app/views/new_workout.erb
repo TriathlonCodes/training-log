@@ -1,5 +1,5 @@
 <div class="container">
-  <form method="POST" action="/workouts">
+  <form id="newWorkout" method="POST" action="/workouts">
     <label for="date">Date: </label>
       <label for="month">Month</label>
   <select name="month">
@@ -19,7 +19,6 @@
       <option value="<%= year %>"><%= year %></option>
     <% end %>
   </select>
-  <label for="swim">Swim</label>
     <br>
     <label for="swim">Swim (meters): </label>
     <input name="swim" type="integer" value=0>
@@ -33,6 +32,6 @@
     <br>
     <input name="description" type="text" value = "">
     <br>
-    <input type="submit" value="Log Workout">
+    <input id='submit-workout' type="submit" value="Log Workout">
   </form>
 </div>

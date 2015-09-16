@@ -9,7 +9,8 @@ get '/workouts' do
   erb :index
 end
 get '/workouts/new' do
-  erb :new_workout
+  p request
+  erb :new_workout, layout: false
 end
 
 get '/workouts/:id' do
@@ -20,9 +21,11 @@ end
 
 post '/workouts' do
   ##to make up for the odd date formating
-  params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
-  Workout.create(params)
-  redirect '/workouts'
+  # params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
+  p @params
+  workout = Workout.create(@params)
+  workout.to_json
+  # redirect '/workouts'
 end
 
 #edit
@@ -35,9 +38,11 @@ end
 post '/workouts/:id' do
   ##maybe there is a better way? getting errors with :splat
   # params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
-  params[:date] = params["month"]+"/"+params["day"]+"/"+params["year"]
+  # params[:date] = params["month"]+"/"+params["day"]+"/"+params["year"]
   Workout.find(params[:id]).update(
-    date: params[:date],
+    year: params[:year],
+    month: params[:month],
+    day: params[:day],
     swim: params[:swim],
     bike: params[:bike],
     run: params[:run],

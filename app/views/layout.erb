@@ -19,9 +19,8 @@
 </head>
 <body>
   <header>
-    <h2>Today is <%= Date.today %>, and last workout was <%= Workout.last.date %>
+    <h2>Today is <%= Date.today %>, and last workout was <%= Workout.last.month %>/<%= Workout.last.day %>/<%= Workout.last.year %>
   </header>
-  <h1>Your Training Data</h1>
   <%= yield %>
 </body>
 </html>

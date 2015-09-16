@@ -1,6 +1,7 @@
 <div class='container'>
-  <a href="/workouts/new">Log a workout</a>
-  <table id="full_log">
+  <form id='create-workout' action="/workouts" method="post"><input type="submit" value="Log a workout"></form>
+  <h1>Your Training Data</h1>
+  <table id="log">
     <thead>
       <td>Date</td>
       <td>Run</td>
@@ -8,9 +9,9 @@
       <td>Bike</td>
       <td>Description</td>
     </thead>
-  <% Workout.all.each do |workout| %>
+  <% Workout.where(year: Date.today.year).each do |workout| %>
     <tr id="<%= workout.id %>">
-      <td><%= workout.date %></td>
+      <td><%= workout.month %>/<%= workout.day %>/<%= workout.year %></td>
       <td><%= workout.run %></td>
       <td><%= workout.swim %></td>
       <td><%= workout.bike %></td>
