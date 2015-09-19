@@ -53,6 +53,6 @@ h1 {
   text-align: center;
 }
 /*debugger*/
-* {
+/** {
   border: 1px solid red;
-}
+}*/

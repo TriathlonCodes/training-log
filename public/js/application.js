@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  $("#log > tbody > tr").on("click", function() {
-    $(this).css({
-      "background-color" : "lightblue"
-    })
-    $(this).addClass("selected")
-  })
+  // $("#log > tbody > tr").on("click", function() {
+  //   $(this).css({
+  //     "background-color" : "lightblue"
+  //   })
+  //   $(this).addClass("selected")
+  // })
  //not a funtional portion
   $("#create-workout").on("click", getLogForm)
   // $(".container").on("submit", "#newWorkout", logWorkout) //*** UNCOMMENT! ****
