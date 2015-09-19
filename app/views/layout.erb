@@ -18,7 +18,9 @@
   <title>Taining Log</title>
 </head>
 <body>
-  <h1>Your Training Data</h1>
+  <header>
+    <h2>Today is <%= Date.today.month %>/<%= Date.today.day %>/<%= Date.today.year %>, and last workout was <%= Workout.last.month %>/<%= Workout.last.day %>/<%= Workout.last.year %>
+  </header>
   <%= yield %>
 </body>
 </html>
