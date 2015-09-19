@@ -1,16 +1,21 @@
 ## read
 get '/' do
   # @ordered_workouts = Workout.order(date: :desc)
-  erb :index
+  redirect '/workouts'
 end
 
 get '/workouts' do
-  @ordered_workouts = Workout.order(:date) ##not dry
+  @ordered_workouts = Workout.order(year: :desc, month: :desc, day: :desc).limit(16)
+  # p @ordered_workouts ##not dry
   erb :index
 end
 get '/workouts/new' do
   p request
-  erb :new_workout, layout: false
+  if request.xhr?
+    erb :new_workout, layout: false
+  else
+    erb :new_workout
+  end
 end
 
 get '/workouts/:id' do
@@ -20,12 +25,12 @@ end
 #create
 
 post '/workouts' do
-  ##to make up for the odd date formating
-  # params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
-  p @params
   workout = Workout.create(@params)
-  workout.to_json
-  # redirect '/workouts'
+  if request.xhr?
+    workout.to_json
+  else
+    redirect '/workouts'
+  end
 end
 
 #edit

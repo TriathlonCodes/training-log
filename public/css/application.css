@@ -17,6 +17,14 @@ td {
   padding-left: 10px;
 }
 
+.int {
+  width: 25px;
+}
+
+.txtbox {
+  width: 20em;
+  height: 3em;
+}
 
 .description {
   width: 400px;

@@ -9,7 +9,7 @@
       <td>Bike</td>
       <td>Description</td>
     </thead>
-  <% Workout.where(year: Date.today.year).each do |workout| %>
+  <% @ordered_workouts.each do |workout| %>
     <tr id="<%= workout.id %>">
       <td><%= workout.month %>/<%= workout.day %>/<%= workout.year %></td>
       <td><%= workout.run %></td>

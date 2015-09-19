@@ -20,24 +20,24 @@ $(document).ready(function() {
 
 });
 
-var logWorkout = function(e) {
-  e.preventDefault()
-  console.log("I'm Hit!")
-  $(this).remove()
-  var workoutData = $(this).serializeArray()
-  console.log(workoutData)
-  var newLogData = $.ajax({
-    url: '/workouts',
-    method: 'post',
-    dataType: 'json',
-    data: workoutData
-  })
-  newLogData.done( function(d){
-    console.log(d)
-    console.log("Post ajax win!")
-    $("#create-workout").show()
-  })
-}
+// var logWorkout = function(e) {
+//   e.preventDefault()
+//   console.log("I'm Hit!")
+//   $(this).remove()
+//   var workoutData = $(this).serializeArray()
+//   console.log(workoutData)
+//   var newLogData = $.ajax({
+//     url: '/workouts',
+//     method: 'post',
+//     dataType: 'json',
+//     data: workoutData
+//   })
+//   newLogData.done( function(d){
+//     console.log(d)
+//     console.log("Post ajax win!")
+//     $("#create-workout").show()
+//   })
+// }
 
 var getLogForm = function(e) {
   e.preventDefault()

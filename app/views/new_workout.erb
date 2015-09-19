@@ -15,13 +15,16 @@
   </select>
   <label for="year">Year</label>
   <select name="year">
-    <% (Date.today.year-5..Date.today.year).to_a.each do |year| %>
+    <% (Date.today.year-5..Date.today.year-1).to_a.each do |year| %>
       <option value="<%= year %>"><%= year %></option>
     <% end %>
+    <option value="year" selected><%= Date.today.year %></option>
+
   </select>
     <br>
     <label for="swim">Swim (meters): </label>
     <input name="swim" type="integer" value=0>
+    <br>
     <label for="bike">Bike (miles): </label>
     <input name="bike" type="float" value=0.0>
     <br>
@@ -30,8 +33,29 @@
     <br>
     <label for="description">Describe your workout:</label>
     <br>
-    <input name="description" type="text" value = "">
+    <input class="txtbox" name="description" type="text" value = "">
     <br>
+    <span id="add_more_form">
+      <label for="type">Type of Workout</label>
+      <select name="type">
+        <option value="ecovery">Recovery</option>
+        <option value="interval">Interval</option>
+        <option value="tempo">Tempo</option>
+        <option value="fartlik">Fartlik</option>
+        <option value="Race">Race</option>
+        <option value="Other">Other</option>
+      </select>
+      <br>
+      <label for="hours_sleep">Hours Sleep</label>
+      <input type="number" name="hours_sleep">
+      <br>
+      <label for="duration">Duration</label>
+      <!-- RIGHT NOW YOU CAN'T LOG AN IRONMAN OVER 12 HOURS! -->
+      <input class='int' type="integer" name="duration_hours">:
+      <input class='int' type="integer" name="duration_minutes">:
+      <input class='int' type="integer" name="duration_seconds">
+    </span>
     <input id='submit-workout' type="submit" value="Log Workout">
+
   </form>
 </div>

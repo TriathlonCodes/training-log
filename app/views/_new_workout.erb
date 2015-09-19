@@ -13,7 +13,7 @@
   </select>
   <label for="year">Year</label>
   <select name="year">
-    <% (Date.today.year..Date.today.year-5).to_a.each do |year| %>
+    <% ((Date.today.year-5)..Date.today.year).to_a.each do |year| %>
       <option value="<%= year %>"><%= year %></option>
     <% end %>
   </select>
