@@ -18,6 +18,10 @@ get '/workouts/new' do
   end
 end
 
+get '/workouts/show' do
+  erb :show
+end
+
 get '/workouts/:id' do
   erb :workout
 end

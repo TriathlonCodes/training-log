@@ -5,8 +5,8 @@ class CreateWorkouts < ActiveRecord::Migration
       t.integer :month
       t.integer :day
       t.integer :swim
-      t.decimal :bike, precision: 2
-      t.decimal :run, precision: 2
+      t.float :bike, limit: 2
+      t.float :run, limit: 2
       t.string :description
       t.string :intensity
       t.integer :hours_sleep
