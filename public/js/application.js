@@ -7,7 +7,7 @@ $(document).ready(function() {
   })
  //not a funtional portion
   $("#create-workout").on("click", getLogForm)
-  $(".container").on("submit", "#newWorkout", logWorkout)
+  // $(".container").on("submit", "#newWorkout", logWorkout) //*** UNCOMMENT! ****
   $(".selected").on("click", function() {
     console.log("this is working")
     $(this).css({
@@ -20,24 +20,29 @@ $(document).ready(function() {
 
 });
 
-// var logWorkout = function(e) {
-//   e.preventDefault()
-//   console.log("I'm Hit!")
-//   $(this).remove()
-//   var workoutData = $(this).serializeArray()
-//   console.log(workoutData)
-//   var newLogData = $.ajax({
-//     url: '/workouts',
-//     method: 'post',
-//     dataType: 'json',
-//     data: workoutData
-//   })
-//   newLogData.done( function(d){
-//     console.log(d)
-//     console.log("Post ajax win!")
-//     $("#create-workout").show()
-//   })
-// }
+var setDefault = function(e) {
+  e.preventDefault
+  // will set the default of a selected list to what has already been selected in a EDIT method
+}
+
+var logWorkout = function(e) {
+  e.preventDefault()
+  console.log("I'm Hit!")
+  $(this).remove()
+  var workoutData = $(this).serializeArray()
+  console.log(workoutData)
+  var newLogData = $.ajax({
+    url: '/workouts',
+    method: 'post',
+    dataType: 'json',
+    data: workoutData
+  })
+  newLogData.done( function(d){
+    console.log(d)
+    console.log("Post ajax win!")
+    $("#create-workout").show()
+  })
+}
 
 var getLogForm = function(e) {
   e.preventDefault()

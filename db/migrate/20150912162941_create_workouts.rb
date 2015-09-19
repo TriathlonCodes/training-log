@@ -8,7 +8,7 @@ class CreateWorkouts < ActiveRecord::Migration
       t.decimal :bike, precision: 2
       t.decimal :run, precision: 2
       t.string :description
-      t.string :type
+      t.string :intensity
       t.integer :hours_sleep
       t.integer :duration_hours
       t.integer :duration_minutes

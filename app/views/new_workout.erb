@@ -4,13 +4,13 @@
       <label for="month">Month</label>
   <select name="month">
     <% (1..12).to_a.each do |month| %>
-      <option value="<%= month %>"><%= month %></option>
+      <option value="<%= month %>" <% if month == Date.today.month %> selected <% end %>><%= month %></option>
     <% end %>
   </select>
   <label for="day">Day</label>
   <select name="day">
     <% (1..31).to_a.each do |day| %>
-      <option value="<%= day %>"><%= day %></option>
+      <option value="<%= day %>" <% if day == Date.today.day %> selected <% end %>><%= day %></option>
     <% end %>
   </select>
   <label for="year">Year</label>
@@ -18,7 +18,7 @@
     <% (Date.today.year-5..Date.today.year-1).to_a.each do |year| %>
       <option value="<%= year %>"><%= year %></option>
     <% end %>
-    <option value="year" selected><%= Date.today.year %></option>
+    <option value="<%= Date.today.year %>" selected><%= Date.today.year %></option>
 
   </select>
     <br>
@@ -36,14 +36,15 @@
     <input class="txtbox" name="description" type="text" value = "">
     <br>
     <span id="add_more_form">
-      <label for="type">Type of Workout</label>
-      <select name="type">
-        <option value="ecovery">Recovery</option>
+      <label for="intensity">Intensity of Workout</label>
+      <select name="intensity">
+        <option selected value=""></option>
+        <option value="recovery">Recovery</option>
         <option value="interval">Interval</option>
         <option value="tempo">Tempo</option>
         <option value="fartlik">Fartlik</option>
-        <option value="Race">Race</option>
-        <option value="Other">Other</option>
+        <option value="race">Race</option>
+        <option value="other">Other</option>
       </select>
       <br>
       <label for="hours_sleep">Hours Sleep</label>

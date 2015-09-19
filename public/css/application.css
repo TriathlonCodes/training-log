@@ -1,8 +1,17 @@
+body {
+  background-color: lightblue;
+  width: 1080px;
+  margin: 0 auto;
+}
 
+div {
+  background-color: white;
+}
 table {
   border: 3px solid black;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 thead {
@@ -25,15 +34,25 @@ td {
   width: 20em;
   height: 3em;
 }
-
+.edit-row {
+  width:1em;
+  padding: 0 ;
+}
 .description {
   width: 400px;
 }
 
+navbar > form {
+  display: inline-block;
+}
 .container {
   margin: 5%;
 }
 
 h1 {
   text-align: center;
+}
+/*debugger*/
+* {
+  border: 1px solid red;
 }
