@@ -1,6 +1,5 @@
 <div class='container'>
-  <form id='create-workout' action="/workouts" method="post"><input type="submit" value="Log a workout"></form>
-  <h1>Your Training Data</h1>
+  <h1>Your Last 15 Workouts</h1>
   <table id="log">
     <thead>
       <td>Date</td>
@@ -16,6 +15,7 @@
       <td><%= workout.swim %></td>
       <td><%= workout.bike %></td>
       <td class="description"><%= workout.description %></td>
+      <td class="edit-row"><button class="edit-button" ><a href="/workouts/<%= workout.id%>/edit">Edit</a></button></td>
     </tr>
   <% end %>
   </table>

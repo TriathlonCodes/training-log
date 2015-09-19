@@ -4,13 +4,13 @@
       <label for="month">Month</label>
   <select name="month">
     <% (1..12).to_a.each do |month| %>
-      <option value="<%= month %>"><%= month %></option>
+      <option value="<%= month %>" <% if month == Date.today.month %> selected <% end %>><%= month %></option>
     <% end %>
   </select>
   <label for="day">Day</label>
   <select name="day">
     <% (1..31).to_a.each do |day| %>
-      <option value="<%= day %>"><%= day %></option>
+      <option value="<%= day %>" <% if day == Date.today.day %> selected <% end %>><%= day %></option>
     <% end %>
   </select>
   <label for="year">Year</label>

@@ -1,5 +1,7 @@
 body {
   background-color: lightblue;
+  width: 1080px;
+  margin: 0 auto;
 }
 
 div {
@@ -32,11 +34,17 @@ td {
   width: 20em;
   height: 3em;
 }
-
+.edit-row {
+  width:1em;
+  padding: 0 ;
+}
 .description {
   width: 400px;
 }
 
+navbar > form {
+  display: inline-block;
+}
 .container {
   margin: 5%;
 }
