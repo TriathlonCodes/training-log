@@ -1,0 +1,22 @@
+<div class='container'>
+  <h1>Your Last 15 Workouts</h1>
+  <table id="log">
+    <thead>
+      <td>Date</td>
+      <td>Run</td>
+      <td>Swim</td>
+      <td>Bike</td>
+      <td>Description</td>
+    </thead>
+  <% @ordered_workouts.each do |workout| %>
+    <tr id="<%= workout.id %>">
+      <td><%= workout.month %>/<%= workout.day %>/<%= workout.year %></td>
+      <td><%= workout.run %></td>
+      <td><%= workout.swim %></td>
+      <td><%= workout.bike %></td>
+      <td class="description"><%= workout.description %></td>
+      <td class="edit-row"><button class="edit-button" ><a href="/workouts/<%= workout.id%>/edit">Edit</a></button></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
