@@ -22,3 +22,13 @@ get '/charts/bike' do
   obj = {key: array}
   return obj.to_json
 end
+
+get '/charts/swim' do
+  @swims = Workout.select(:id, :swim)
+  array = [["2015", "Distance"]]
+  @swims.each do |swim|
+    array<< [swim.id, swim.swim]
+  end
+  obj = {key: array}
+  return obj.to_json
+end

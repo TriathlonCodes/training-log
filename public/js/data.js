@@ -1,29 +1,30 @@
 
 $(document).ready(function() {
 //   // $("body").append("Hello World")
-  drawChart('/charts/run')
-  drawChart('/charts/bike')
+  drawChart('/charts/run', 'Run', 'Miles')
+  // drawChart('/charts/bike', 'Bike', 'Miles')
+  // drawChart('/charts/swim', 'Swim', 'Meters')
 
 })
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
-function drawChart(path) {
+function drawChart(path, title, units) {
   $.ajax({
     url: path,
-    method: 'get',
+    // method: 'get',
     dataType: 'json'
-  }).done(function(run_data) {
+  }).done(function(workout_data) {
 
     var data = google.visualization.arrayToDataTable(
-      run_data.key);
+      workout_data.key);
     console.log('HIT!' + data)
     var options = {
-      title: 'Year in Review',
+      title: title,
       hAxis: {title: '2015',  titleTextStyle: {color: '#333'}},
-      vAxis: {title: 'Miles', minValue: 0}
+      vAxis: {title: units, minValue: 0}
     };
 
-    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.AreaChart($("#chart_div")[0]);
     chart.draw(data, options);
   })
 
