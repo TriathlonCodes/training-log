@@ -5,8 +5,7 @@ get '/' do
 end
 
 get '/workouts' do
-  @ordered_workouts = Workout.order(year: :desc, month: :desc, day: :desc).limit(16)
-  # p @ordered_workouts ##not dry
+  @most_recent_workouts = workouts[0..14]
   erb :index
 end
 get '/workouts/new' do
@@ -29,9 +28,14 @@ end
 #create
 
 post '/workouts' do
-  workout = Workout.create(@params)
+  # if @params.has_workout_data?
+    workout = Workout.create(@params)
+  # else
+    # puts "This is an empty workout"
+    # workout = nil
+  # end
   if request.xhr?
-    workout.to_json
+      workout.to_json
   else
     redirect '/workouts'
   end
