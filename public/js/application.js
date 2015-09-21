@@ -18,16 +18,17 @@ var logWorkout = function(e) {
   $("#create-workout").show()
   var workoutData = $(this).serializeArray()
   console.log(workoutData)
-  // var newLogData = $.ajax({
-  //   url: '/workouts',
-  //   method: 'post',
-  //   dataType: 'json',
-  //   data: workoutData
-  // })
-  // newLogData.done( function(d){
-  //   console.log(d)
-  //   console.log("Post ajax win!")
-  // })
+  var newLogData = $.ajax({
+    url: '/workouts',
+    method: 'post',
+    dataType: 'json',
+    data: workoutData
+  })
+  newLogData.done( function(d){
+    console.log(d)
+    console.log("Post ajax win!")
+    $('span#table').load(document.URL + ' table.log')
+  })
 }
 
 var getLogForm = function(e) {
