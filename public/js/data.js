@@ -2,6 +2,9 @@
 $(document).ready(function() {
 //   // $("body").append("Hello World")
   drawChart('/charts/run', 'Run', 'Miles')
+  drawChart('/charts/bike', 'Bike','Miles')
+  drawChart('/charts/swim', 'Swim','Meters')
+
   // drawChart('/charts/bike', 'Bike', 'Miles')
   // drawChart('/charts/swim', 'Swim', 'Meters')
 
@@ -30,7 +33,7 @@ function drawChart(path, title, units) {
       vAxis: {title: units, minValue: 0}
     };
 
-    var chart = new google.visualization.AreaChart($("#chart_div")[0]);
+    var chart = new google.visualization.AreaChart($("#" + title)[0]);
     chart.draw(data, options);
   })
 
