@@ -29,7 +29,7 @@ end
 
 post '/workouts' do
   # if @params.has_workout_data?
-    workout = Workout.create(@params)
+  workout = Workout.new(@params)
   # else
     # puts "This is an empty workout"
     # workout = nil
@@ -53,9 +53,7 @@ post '/workouts/:id' do
   # params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
   # params[:date] = params["month"]+"/"+params["day"]+"/"+params["year"]
   Workout.find(params[:id]).update(
-    year: params[:year],
-    month: params[:month],
-    day: params[:day],
+    date: params[:date],
     swim: params[:swim],
     bike: params[:bike],
     run: params[:run],

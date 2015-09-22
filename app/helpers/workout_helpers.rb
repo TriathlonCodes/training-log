@@ -1,10 +1,10 @@
 helpers do
   def get_last_workout
-    Workout.order(year: :desc, month: :desc, day: :desc).first
+    Workout.order(date: :desc, id: :desc).first
   end
 
   def workouts
-    Workout.order(year: :desc, month: :desc, day: :desc, id: :desc)
+    Workout.order(date: :desc, id: :desc)
   end
 
   def current_workout

@@ -14,13 +14,19 @@ function drawChart(path, title, units) {
     // method: 'get',
     dataType: 'json'
   }).done(function(workout_data) {
-
+    console.log(workout_data.workout)
     var data = google.visualization.arrayToDataTable(
-      workout_data.key);
+      workout_data.workout);
+
     console.log('HIT!' + data)
     var options = {
       title: title,
-      hAxis: {title: '2015',  titleTextStyle: {color: '#333'}},
+      hAxis: {title: 'Date',
+              titleTextStyle: {color: '#333'},
+              units: {
+                days: {format: ['MMM dd yy']}
+              }
+            },
       vAxis: {title: units, minValue: 0}
     };
 

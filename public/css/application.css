@@ -54,6 +54,10 @@ navbar > form {
 h1 {
   text-align: center;
 }
+
+#chart_div {
+  height: 300px;
+}
 /*debugger*/
 /** {
   border: 1px solid red;

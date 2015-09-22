@@ -13,7 +13,7 @@
 </head>
 <body>
   <header>
-    <h2>Today is <%= Date.today.month %>/<%= Date.today.day %>/<%= Date.today.year %>, and last workout was <%= get_last_workout.month %>/<%= get_last_workout.day %>/<%= get_last_workout.year %>
+    <h2>Today is <%= Date.today %>, and last workout was <%= get_last_workout.date %>
   </header>
   <navbar>
     <%= erb :'_navbar' %>

@@ -12,7 +12,7 @@
     </thead>
   <% @most_recent_workouts.each do |workout| %>
     <tr id="<%= workout.id %>">
-      <td><%= workout.month %>/<%= workout.day %>/<%= workout.year %></td>
+      <td><%= workout.date %></td>
       <td><%= workout.run %></td>
       <td><%= workout.swim %></td>
       <td><%= workout.bike %></td>

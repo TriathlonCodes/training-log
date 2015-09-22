@@ -1,25 +1,9 @@
 <div class="container">
-  <p>Editing the workout you did on <%= @workout.month %>/<%= @workout.day %>/<%= @workout.year %>.</p>
+  <p>Editing the workout you did on <%= @workout.date %>.</p>
   <form method="POST" action="/workouts/<%= @workout.id %>">
     <label>Date: </label>
-    <label for="month">Month</label>
-    <select name="month">
-      <% (1..12).to_a.each do |month| %>
-        <option value="<%= month %>" <% if month == @workout.month %> selected <% end %>><%= month %></option>
-      <% end %>
-    </select>
-    <label for="day">Day</label>
-    <select name="day">
-      <% (1..31).to_a.each do |day| %>
-        <option value="<%= day %>" <% if day == @workout.day %> selected <% end %>><%= day %></option>
-      <% end %>
-    </select>
-    <label for="year">Year</label>
-    <select name="year">
-      <% (Date.today.year-5..Date.today.year).to_a.each do |year| %>
-        <option value="<%= year %>" <% if year == @workout.year %> selected <% end %>><%= year %></option>
-      <% end %>
-    </select>
+    <input type="date" name = "date" value = "<%= @workout.date %>">
+
     <input type="hidden" name="id" value=<%= @workout.id %>>
     <label for="swim">Swim (meters): </label>
     <input name="swim" type="integer" value=<%= @workout.swim %>>
