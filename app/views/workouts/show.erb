@@ -8,7 +8,7 @@
       <td>Bike</td>
       <td>Description</td>
     </thead>
-  <% workouts.all.each do |workout| %>
+  <% workouts.each do |workout| %>
     <tr id="<%= workout.id %>">
       <td><%= workout.date %></td>
       <td><%= workout.run %></td>

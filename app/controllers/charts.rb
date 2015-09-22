@@ -34,3 +34,8 @@ get '/charts/last_year/swim' do
   obj = {workout: swims}
   return obj.to_json
 end
+
+get '/charts/year/:year' do
+  @year = params[:year]
+
+end

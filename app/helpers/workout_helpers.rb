@@ -22,4 +22,19 @@ helpers do
     Workout.where("date >= ?", "#{year}-01-01").where("date <= ?", "#{year}-12-31")
   end
 
+  def all_years
+    first_year = workouts[-1].date.year
+    return (first_year..Date.today.year).to_a
+  end
+
+  def search_by(params)
+    # if params[:year] != ""
+    #   selected = workouts_from_year(params[:year])
+    # end
+    if params[:intensity] != ""
+      selected = Workout.where(intensity: params[:intensity])
+    end
+    return selected
+  end
+
 end
