@@ -11,18 +11,18 @@ end
 get '/workouts/new' do
   p request
   if request.xhr?
-    erb :new_workout, layout: false
+    erb :'workouts/new_workout', layout: false
   else
-    erb :new_workout
+    erb :'workouts/new_workout'
   end
 end
 
 get '/workouts/show' do
-  erb :show
+  erb :'workouts/show'
 end
 
 get '/workouts/:id' do
-  erb :workout
+  erb :'/workouts/workout'
 end
 
 #create
@@ -45,7 +45,7 @@ end
 
 get '/workouts/:id/edit' do
   @workout = Workout.find(params[:id])
-  erb :edit_workout
+  erb :'workouts/edit_workout'
 end
 
 post '/workouts/:id' do
