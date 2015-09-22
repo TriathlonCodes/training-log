@@ -2,7 +2,7 @@ get '/charts' do
   erb :charts
 end
 
-get '/charts/run' do
+get '/charts/last_year/run' do
 
   runs = [["Date", "Distance"]]
   # the_last_365_days
@@ -14,7 +14,7 @@ get '/charts/run' do
 end
 
 
-get '/charts/bike' do
+get '/charts/last_year/bike' do
   # @bike_rides = Workout.order(date: :desc).select(:date, :bike).limit(100).reverse
   bikes = [["2015", "Distance"]]
   the_last_365_days.each do |bike|
@@ -25,7 +25,7 @@ get '/charts/bike' do
   return obj.to_json
 end
 
-get '/charts/swim' do
+get '/charts/last_year/swim' do
   # @swims = Workout.order(date: :desc).select(:date, :swim).limit(100).reverse
   swims = [["2015", "Distance"]]
   the_last_365_days.each do |swim|
