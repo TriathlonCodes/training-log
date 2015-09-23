@@ -29,13 +29,14 @@ end
 
 post '/workouts' do
   # if @params.has_workout_data?
-  @workout = Workout.create(@params)
-  if @workout.errors
-    p @workout.errors.messages
-  end
-  if request.xhr?
-      @workout.to_json
 
+  workout = Workout.create(@params)
+  # else
+    # puts "This is an empty workout"
+    # workout = nil
+  # end
+  if request.xhr?
+      workout.to_json
   else
     redirect '/workouts'
   end
@@ -62,7 +63,7 @@ put '/workouts/:id' do
     hours_sleep: params[:hours_sleep],
     duration_hours: params[:duration_hours],
     duration_seconds: params[:duration_seconds],
-    duration_minutes: params[:duration_minutes]
+    duration_minutes: params[:duration_minutes],
     )
   redirect '/workouts'
 end

@@ -2,8 +2,7 @@ $(document).ready(function() {
 
  //not a funtional portion
   $("#create-workout").on("click", getLogForm)
-  $(".new_workout").on("submit", "form#newWorkout", logWorkout) //*** UNCOMMENT! ****
-
+  $(".new_workout").on("submit", "form#newWorkout", logWorkout)
 });
 
 var setDefault = function(e) {
@@ -26,6 +25,7 @@ var logWorkout = function(e) {
   })
   newLogData.done( function(d){
     console.log(d)
+  debugger
     console.log("Post ajax win!")
     $('span#table').load(document.URL + ' table.log')
   })

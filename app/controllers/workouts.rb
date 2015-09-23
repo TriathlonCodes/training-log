@@ -1,5 +1,6 @@
-
+require 'pry'
 get '/workouts' do
+    # p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
   @most_recent_workouts = workouts[0..14]
   erb :index
 end
@@ -25,7 +26,11 @@ end
 
 post '/workouts' do
   # if @params.has_workout_data?
-  workout = Workout.create(@params)
+  p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+  workout = Workout.create(params)
+  p "%%"*40
+  p workout.errors.messages
+  p "%%"*40
   if workout == Workout.last
     puts "Success"
   else
