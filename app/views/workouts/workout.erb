@@ -1,4 +1,4 @@
-<div class='container'>
+<!-- <div class='container'> -->
   <h1>Selected Workouts</h1>
   <table class="selected_log log">
     <thead>
@@ -8,7 +8,8 @@
       <td>Bike</td>
       <td>Description</td>
     </thead>
-  <% @workouts_selected.each do |workout| %>
+    <% if @workouts_selected %>
+      <% @workouts_selected.each do |workout| %>
     <tr id="<%= workout.id %>">
       <td><%= workout.date %></td>
       <td><%= workout.run %></td>
@@ -18,5 +19,6 @@
       <td class="edit-row"><form class="edit-button" action="/workouts/<%= workout.id%>/edit"><input type="submit" value="Edit"></form></td>
     </tr>
   <% end %>
+  <% end %>
   </table>
-</div>
+<!-- </div> -->

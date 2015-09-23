@@ -4,5 +4,5 @@ end
 
 post '/search' do
   @workouts_selected = Workout.search_by(params)
-  erb :'workouts/workout'
+  erb :'search'
 end
