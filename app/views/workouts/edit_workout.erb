@@ -17,7 +17,7 @@
     <br>
     <input class="txtbox" name="description" type="text" value = "<%= @workout.description %>">
     <br>
-    <span id="add_more_form">
+    <!-- <span id="add_more_form"> -->
       <label for="intensity">Intensity of Workout</label>
       <select name="intensity" value="<%= @workout.intensity %>">
         <option value="" ></option>
@@ -33,11 +33,10 @@
       <input type="number" name="hours_sleep" value=<%= @workout.hours_sleep %>>
       <br>
       <label for="duration">Duration</label>
-      <!-- RIGHT NOW YOU CAN'T LOG AN IRONMAN OVER 12 HOURS! -->
-      <input class='int' type="integer" name="duration_hours" value=<%= @workout.duration_hours %>>:
-      <input class='int' type="integer" name="duration_minutes" value=<%= @workout.duration_minutes %>>:
-      <input class='int' type="integer" name="duration_seconds" value=<%= @workout.duration_seconds %>>
-    </span>
+      <input class='int' type="integer" name="duration_hours" value="<%= @workout.duration_hours %>">:
+      <input class='int' type="integer" name="duration_minutes" value="<%= @workout.duration_minutes %>">:
+      <input class='int' type="integer" name="duration_seconds" value="<%= @workout.duration_seconds %>">
+    <!-- </span> -->
     <input type="submit" value="Edit Workout">
 
   </form>

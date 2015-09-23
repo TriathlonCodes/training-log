@@ -1,9 +1,9 @@
 
 $(document).ready(function() {
 //   // $("body").append("Hello World")
-  drawChart('/charts/run', 'Run', 'Miles')
-  drawChart('/charts/bike', 'Bike','Miles')
-  drawChart('/charts/swim', 'Swim','Meters')
+  drawChart('/charts/last_year/run', 'Run', 'Miles')
+  drawChart('/charts/last_year/bike', 'Bike','Miles')
+  drawChart('/charts/last_year/swim', 'Swim','Meters')
 
   // drawChart('/charts/bike', 'Bike', 'Miles')
   // drawChart('/charts/swim', 'Swim', 'Meters')
@@ -27,7 +27,7 @@ function drawChart(path, title, units) {
       hAxis: {title: 'Date',
               titleTextStyle: {color: '#333'},
               units: {
-                days: {format: ['MMM dd yy']}
+                days: {format: ['MM dd']}
               }
             },
       vAxis: {title: units, minValue: 0}
