@@ -15,7 +15,7 @@
       <td><%= workout.swim %></td>
       <td><%= workout.bike %></td>
       <td class="description"><%= workout.description %></td>
-      <td class="edit-row"><button class="edit-button" ><a href="/workouts/<%= workout.id%>/edit">Edit</a></button></td>
+      <td class="edit-row"><form class="edit-button" action="/workouts/<%= workout.id%>/edit"><input type="submit" value="Edit"></form></td>
     </tr>
   <% end %>
   </table>
