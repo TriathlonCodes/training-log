@@ -29,13 +29,13 @@ end
 
 post '/workouts' do
   # if @params.has_workout_data?
-  workout = Workout.new(@params)
-  # else
-    # puts "This is an empty workout"
-    # workout = nil
-  # end
+  @workout = Workout.create(@params)
+  if @workout.errors
+    p @workout.errors.messages
+  end
   if request.xhr?
-      workout.to_json
+      @workout.to_json
+
   else
     redirect '/workouts'
   end
