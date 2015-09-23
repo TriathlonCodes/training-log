@@ -48,7 +48,7 @@ get '/workouts/:id/edit' do
   erb :'workouts/edit_workout'
 end
 
-post '/workouts/:id' do
+put '/workouts/:id' do
   ##maybe there is a better way? getting errors with :splat
   # params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
   # params[:date] = params["month"]+"/"+params["day"]+"/"+params["year"]
@@ -57,7 +57,13 @@ post '/workouts/:id' do
     swim: params[:swim],
     bike: params[:bike],
     run: params[:run],
-    description: params[:description])
+    description: params[:description],
+    intensity: params[:intensity],
+    hours_sleep: params[:hours_sleep],
+    duration_hours: params[:duration_hours],
+    duration_seconds: params[:duration_seconds],
+    duration_minutes: params[:duration_minutes]
+    )
   redirect '/workouts'
 end
 

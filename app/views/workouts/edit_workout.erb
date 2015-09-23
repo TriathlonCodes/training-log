@@ -1,6 +1,7 @@
 <div class="container">
   <p>Editing the workout you did on <%= @workout.date %>.</p>
   <form method="POST" action="/workouts/<%= @workout.id %>">
+    <input type="hidden" name="_method" value="PUT"
     <label>Date: </label>
     <input type="date" name = "date" value = "<%= @workout.date %>">
 
@@ -19,14 +20,14 @@
     <br>
     <!-- <span id="add_more_form"> -->
       <label for="intensity">Intensity of Workout</label>
-      <select name="intensity" value="<%= @workout.intensity %>">
+      <select name="intensity">
         <option value="" ></option>
-        <option value="recovery" >Recovery</option>
-        <option value="interval" >Interval</option>
-        <option value="tempo" >Tempo</option>
-        <option value="fartlik" >Fartlik</option>
-        <option value="race" >Race</option>
-        <option value="other" >Other</option>
+        <option value="recovery" <% if @workout.intensity=="recovery" %> selected <% end %>>Recovery</option>
+        <option value="interval" <% if @workout.intensity=="interval" %> selected <% end %>>Interval</option>
+        <option value="tempo" <% if @workout.intensity=="tempo" %> selected <% end %>>Tempo</option>
+        <option value="fartlik" <% if @workout.intensity=="fartlik" %> selected <% end %>>Fartlik</option>
+        <option value="race" <% if @workout.intensity=="race" %> selected <% end %>>Race</option>
+        <option value="other" <% if @workout.intensity=="other" %> selected <% end %>>Other</option>
       </select>
       <br>
       <label for="hours_sleep">Hours Sleep</label>

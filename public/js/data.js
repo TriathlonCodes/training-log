@@ -27,7 +27,7 @@ function drawChart(path, title, units) {
       hAxis: {title: 'Date',
               titleTextStyle: {color: '#333'},
               units: {
-                days: {format: ['MM dd']}
+                months: {format: ['MM']}
               }
             },
       vAxis: {title: units, minValue: 0}

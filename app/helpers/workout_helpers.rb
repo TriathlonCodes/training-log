@@ -27,14 +27,4 @@ helpers do
     return (first_year..Date.today.year).to_a
   end
 
-  def search_by(params)
-    # if params[:year] != ""
-    #   selected = workouts_from_year(params[:year])
-    # end
-    if params[:intensity] != ""
-      selected = Workout.where(intensity: params[:intensity])
-    end
-    return selected
-  end
-
 end
