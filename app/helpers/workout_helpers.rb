@@ -1,6 +1,9 @@
 helpers do
   def get_last_workout
-    Workout.order(date: :desc, id: :desc).first
+    workouts = Workout.order(date: :desc, id: :desc).all
+    workouts.each do |workout|
+      return workout if workout.has_workout_data?
+    end
   end
 
   def workouts

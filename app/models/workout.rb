@@ -13,19 +13,23 @@ class Workout < ActiveRecord::Base
 
   def self.search_by(params)
     # binding.pry
-    p params
+    selected = Workout.all
     if params[:year] != ""
-      selected = workouts_from_year(params[:year])
+      selected_year = workouts_from_year(params[:year])
+      selected = selected & selected_year
     end
     # p params[:intensity]
     if params[:intensity] != ""
-      selected = Workout.where(intensity: params[:intensity])
+      selected_intensity = Workout.where(intensity: params[:intensity])
+      selected = selected & selected_intensity
       # binding.pry
     end
     if params[:month] != ""
-      selected = workouts_from_month(params[:month])
+      selected_month = workouts_from_month(params[:month])
+      selected = selected & selected_month
     end
-    return selected
+    # return selected_month & selected_year
+    return selected.select {|workout| workout.has_workout_data?}
   end
 
   def self.workouts_from_year(year)
