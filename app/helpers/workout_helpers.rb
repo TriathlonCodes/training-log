@@ -18,4 +18,13 @@ helpers do
     Workout.where("date < ?", Date.today)[-365..-1]
   end
 
+  def workouts_from_year(year)
+    Workout.where("date >= ?", "#{year}-01-01").where("date <= ?", "#{year}-12-31")
+  end
+
+  def all_years
+    first_year = workouts[-1].date.year
+    return (first_year..Date.today.year).to_a
+  end
+
 end
