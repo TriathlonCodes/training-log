@@ -6,6 +6,10 @@ helpers do
     end
   end
 
+  def all_ordered_workouts
+    Workout.order(date: :desc, id: :desc)
+  end
+
   def workouts
     Workout.order(date: :desc, id: :desc).select{ |workout|
       workout.has_workout_data?

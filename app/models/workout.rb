@@ -45,4 +45,27 @@ class Workout < ActiveRecord::Base
     }
     return selected
   end
+  def self.cumulative(year)
+    workouts_to_accumulate=all_ordered_workouts & workouts_from_year(year)
+    run_accumulation_hash = {}
+    run_accumulator = 0
+    swim_accumulation_hash = {}
+    swim_accumulator = 0
+    bike_accumulation_hash = {}
+    bike_accumulator = 0
+    p workouts_to_accumulate
+
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
