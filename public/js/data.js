@@ -1,17 +1,16 @@
 
 $(document).ready(function() {
 //   // $("body").append("Hello World")
-  drawChart('/charts/last_year/run', 'Run', 'Miles')
-  drawChart('/charts/last_year/bike', 'Bike','Miles')
-  drawChart('/charts/last_year/swim', 'Swim','Meters')
-
-  // drawChart('/charts/bike', 'Bike', 'Miles')
-  // drawChart('/charts/swim', 'Swim', 'Meters')
+  // drawChart('/charts/last_year/run', 'Run', 'Miles')
+  // drawChart('/charts/last_year/bike', 'Bike','Miles')
+  // drawChart('/charts/last_year/swim', 'Swim','Meters')
+  drawChart('/charts/years/2015/bike', 'cumul_bike','Miles')
 
 })
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
 function drawChart(path, title, units) {
+  console.log(path)
   $.ajax({
     url: path,
     // method: 'get',

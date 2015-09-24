@@ -7,7 +7,7 @@ helpers do
   end
 
   def all_ordered_workouts
-    Workout.order(date: :desc, id: :desc)
+
   end
 
   def workouts
