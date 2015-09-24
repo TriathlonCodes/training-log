@@ -1,10 +1,9 @@
 
 $(document).ready(function() {
-//   // $("body").append("Hello World")
-  // drawChart('/charts/last_year/run', 'Run', 'Miles')
-  // drawChart('/charts/last_year/bike', 'Bike','Miles')
-  // drawChart('/charts/last_year/swim', 'Swim','Meters')
-  drawChart('/charts/years/2015/bike', 'cumul_bike','Miles')
+  drawChart('/charts/last_year/run', 'Run', 'Miles')
+  drawChart('/charts/last_year/bike', 'Bike','Miles')
+  drawChart('/charts/last_year/swim', 'Swim','Meters')
+  $("#select_chart_form").submit()n
 
 })
 google.load("visualization", "1", {packages:["corechart"]});

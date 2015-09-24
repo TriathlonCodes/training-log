@@ -39,8 +39,8 @@ get '/charts/years/:year/run' do
   @year = params[:year]
   runs = [[@year, "Distance"]]
   acumulations = Workout.cumulative(@year)
-  acumulations.each do |run|
-    runs<< [run.date, run.run]
+  acumulations[1].each do |date, run|
+    runs<< [date, run]
   end
   obj = {workout: runs}
   return obj.to_json
@@ -49,19 +49,17 @@ end
 get '/charts/years/:year/swim' do
   @year = params[:year]
   swims = [[@year, "Distance"]]
-
   acumulations = Workout.cumulative(@year)
-    acumulations.each do |swim|
-    swims<< [swim.date, swim.swim]
+  acumulations[1].each do |date, swim|
+    swims<< [date, swim]
   end
-  p acumulations
   obj = {workout: swims}
   return obj.to_json
 end
 
 get '/charts/years/:year/bike' do
   @year = params[:year]
-  bikes = [["2010", "Distance"]]
+  bikes = [[@year, "Distance"]]
   acumulations = Workout.cumulative(@year)
   acumulations[1].each do |date, bike|
     bikes<< [date, bike]
