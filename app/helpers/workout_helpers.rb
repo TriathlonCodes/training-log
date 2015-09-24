@@ -6,9 +6,6 @@ helpers do
     end
   end
 
-  def all_ordered_workouts
-
-  end
 
   def workouts
     Workout.order(date: :desc, id: :desc).select{ |workout|

@@ -62,7 +62,7 @@ class Workout < ActiveRecord::Base
       bike_accumulator += workout.bike
       @bike_accumulation_hash[workout[:date]] = bike_accumulator
     end
-    return [@run_accumulation_hash, @bike_accumulation_hash, @swim_accumulation_hash]
+    return {"run"=> @run_accumulation_hash, "bike"=> @bike_accumulation_hash, "swim"=> @swim_accumulation_hash}
   end
 end
 
