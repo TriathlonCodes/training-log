@@ -47,6 +47,7 @@ class Workout < ActiveRecord::Base
   end
   def self.cumulative(year)
     workouts_to_accumulate= Workout.workouts_from_year(year).order(date: :asc, id: :desc)
+    p workouts_to_accumulate
     @run_accumulation_hash = {}
     run_accumulator = 0
     @swim_accumulation_hash = {}

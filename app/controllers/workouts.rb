@@ -26,11 +26,8 @@ end
 
 post '/workouts' do
   # if @params.has_workout_data?
-  p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
   workout = Workout.create(params)
-  p "%%"*40
   p workout.errors.messages
-  p "%%"*40
   if workout == Workout.last
     puts "Success"
   else

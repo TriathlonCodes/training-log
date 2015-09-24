@@ -25,7 +25,6 @@ var logWorkout = function(e) {
   })
   newLogData.done( function(d){
     console.log(d)
-  debugger
     console.log("Post ajax win!")
     $('span#table').load(document.URL + ' table.log')
   })
