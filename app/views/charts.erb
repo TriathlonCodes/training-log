@@ -1,5 +1,25 @@
 <script src="/js/data.js"></script>
-<h1>Your Last Year</h1>
-<div class="chart_div" id="Run"></div>
-<div class="chart_div" id="Bike"></div>
-<div class="chart_div" id="Swim"></div>
+
+
+<div class="container">
+<form id="select_charts_form" action="/charts/show" method="get">
+  <label for="Year">Year</label>
+  <select name="year">
+    <option value="select-year">Select Year</option>
+    <% all_years.each do |year| %>
+      <option value = "<%= year %>"><%= year %></option>
+    <% end %>
+  </select>
+  <label for="format">Format of Chart</label>
+  <select name="format">
+    <option value="choose-format">Choose Format</option>
+    <option value="individual">Individual Workouts</option>
+    <option value="cumulative">Year's Cumulative Workouts</option>
+  </select>
+</form>
+  <div class="charts">
+    <div class="chart_div" id="Run"></div>
+    <div class="chart_div" id="Bike"></div>
+    <div class="chart_div" id="Swim"></div>
+  </div>
+</div>

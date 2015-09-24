@@ -6,6 +6,7 @@ helpers do
     end
   end
 
+
   def workouts
     Workout.order(date: :desc, id: :desc).select{ |workout|
       workout.has_workout_data?
@@ -22,7 +23,7 @@ helpers do
   end
 
   def workouts_from_year(year)
-    Workout.where("date >= ?", "#{year}-01-01").where("date <= ?", "#{year}-12-31")
+    Workout.where("date >= ?", "#{year}-01-01").where("date <= ?", "#{year}-12-31").order(date: :asc, id: :desc)
   end
 
   def all_years

@@ -45,4 +45,36 @@ class Workout < ActiveRecord::Base
     }
     return selected
   end
+  def self.cumulative(year)
+    workouts_to_accumulate= Workout.workouts_from_year(year).order(date: :asc, id: :desc)
+    p workouts_to_accumulate
+    @run_accumulation_hash = {}
+    run_accumulator = 0
+    @swim_accumulation_hash = {}
+    swim_accumulator = 0
+    @bike_accumulation_hash = {}
+    bike_accumulator = 0
+    # return workouts_to_accumulate
+    workouts_to_accumulate.each do |workout|
+      run_accumulator += workout.run
+      @run_accumulation_hash[workout[:date]] = run_accumulator
+      swim_accumulator += workout.swim
+      @swim_accumulation_hash[workout[:date]] = swim_accumulator
+      bike_accumulator += workout.bike
+      @bike_accumulation_hash[workout[:date]] = bike_accumulator
+    end
+    return {"run"=> @run_accumulation_hash, "bike"=> @bike_accumulation_hash, "swim"=> @swim_accumulation_hash}
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
