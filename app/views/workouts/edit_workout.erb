@@ -1,0 +1,49 @@
+<div class="container transbox">
+  <form id="delete-button" method="get" action="/workouts/<%= current_workout.id %>/delete">
+    <input type="submit" value="Delete Workout">
+  </form>
+  <p>Editing the workout you did on <%= @workout.date %>.</p>
+  <form method="POST" action="/workouts/<%= @workout.id %>">
+    <input type="hidden" name="_method" value="PUT"
+    <label>Date: </label>
+    <input type="date" name = "date" value = "<%= @workout.date %>">
+
+    <input type="hidden" name="id" value=<%= @workout.id %>>
+    <label for="swim">Swim (meters): </label>
+    <input name="swim" type="integer" value=<%= @workout.swim %>>
+    <label for="bike">Bike (miles): </label>
+    <input name="bike" type="float" value=<%= @workout.bike %>>
+    <br>
+    <label for="run">Run (miles): </label>
+    <input name="run" type="float" value=<%= @workout.run %>>
+    <br>
+    <label for="description" >Describe your workout:</label>
+    <br>
+    <input class="txtbox" name="description" type="text" value = "<%= @workout.description %>">
+    <br>
+    <!-- <span id="add_more_form"> -->
+      <label for="intensity">Intensity of Workout</label>
+      <select name="intensity">
+        <option value="" ></option>
+        <option value="recovery" <% if @workout.intensity=="recovery" %> selected <% end %>>Recovery</option>
+        <option value="interval" <% if @workout.intensity=="interval" %> selected <% end %>>Interval</option>
+        <option value="tempo" <% if @workout.intensity=="tempo" %> selected <% end %>>Tempo</option>
+        <option value="fartlik" <% if @workout.intensity=="fartlik" %> selected <% end %>>Fartlik</option>
+        <option value="race" <% if @workout.intensity=="race" %> selected <% end %>>Race</option>
+        <option value="long slow distance" <% if @workout.intensity=="long slow distance" %> selected <% end %>>Long Slow Distance</option>
+        <option value="other" <% if @workout.intensity=="other" %> selected <% end %>>Other</option>
+      </select>
+      <br>
+      <label for="hours_sleep">Hours Sleep</label>
+      <input type="number" name="hours_sleep" value=<%= @workout.hours_sleep %>>
+      <br>
+      <label for="duration">Duration</label>
+      <input class='int' type="integer" name="duration_hours" value="<%= @workout.duration_hours %>">:
+      <input class='int' type="integer" name="duration_minutes" value="<%= @workout.duration_minutes %>">:
+      <input class='int' type="integer" name="duration_seconds" value="<%= @workout.duration_seconds %>">
+    <!-- </span> -->
+    <input type="submit" value="Edit Workout">
+
+  </form>
+
+</div>

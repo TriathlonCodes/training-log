@@ -1,0 +1,49 @@
+<div class="container transbox">
+  <span class="new_workout"></span>
+  <h3>Select By:</h3>
+  <form method="POST" action="/search">
+    <label for="year">Year: </label>
+    <select name="year">
+      <option selected></option>
+      <% all_years.each do |year| %>
+        <option value = "<%= year %>"><%= year %></option>
+      <% end %>
+    </select>
+    <label for "month">Month: </label>
+    <select name="month">
+        <option selected></option>
+      <% (1..12).to_a.each do |month| %>
+        <option value ="<%= month %>"><%= month %></option>
+      <% end %>
+    </select>
+    <label for="intensity">Intensity of Workout: </label>
+      <select name="intensity">
+        <option selected></option>
+        <option value="recovery" >Recovery</option>
+        <option value="interval" >Interval</option>
+        <option value="tempo" >Tempo</option>
+        <option value="fartlik" >Fartlik</option>
+        <option value="race" >Race</option>
+        <option value="long slow distance" >Long Slow Distance</option>
+        <option value="other" >Other</option>
+      </select>
+      <label for="sport">Sport</label>
+      <select name="sport">
+        <option selected></option>
+        <option value="swim">Swim</option>
+        <option value="bike">Bike</option>
+        <option value="run">Run</option>
+      </select>
+      <label for="distance">Distance</label>
+      <select name="boolean">
+        <option selected></option>
+        <option value="<=">Less Than</option>
+        <option value=">=">Greater Than</option>
+        <option value="==">Equal To</option>
+      </select>
+      <input class="int" type="float" name="distance" placeholder="0">
+      <input type="submit" value = "Search for Workouts">
+  </form>
+
+  <%= erb :'workouts/_selected_workout' %>
+</div>

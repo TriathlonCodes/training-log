@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
   <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- Google charts -->
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script src="/js/application.js"></script>
 
-  <title>Taining Log</title>
+  <title>LogAll Taining Log</title>
 </head>
 <body>
   <header>
-    <h2>Today is <%= Date.today.month %>/<%= Date.today.day %>/<%= Date.today.year %>, and last workout was <%= get_last_workout.month %>/<%= get_last_workout.day %>/<%= get_last_workout.year %>
+    Welcome to LogAll
   </header>
   <navbar>
     <%= erb :'_navbar' %>
   </navbar>
+
   <%= yield %>
 </body>
 </html>
