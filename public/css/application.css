@@ -59,6 +59,7 @@ h1 {
   height: 15em;
   margin: 1em;
   box-shadow: 2px 2px 10px black;
+  display: none;
 }
 
 input[type="submit"] {

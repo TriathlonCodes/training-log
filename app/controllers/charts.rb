@@ -1,3 +1,6 @@
+
+
+require 'date'
 get '/charts' do
   erb :charts
 end
@@ -13,12 +16,14 @@ end
 get '/charts/:year/cumulative/:sport' do
   year = params[:year]
   sport = params[:sport]
-  workouts = [[year, "Distance"]]
+  workouts = [["Date", "Distance"]]
   acumulations = Workout.cumulative(year)
-  p acumulations[sport]
+  # p acumulations[sport]
   acumulations[sport].each do |date, workout|
+    parse_to_google(date)
     workouts << [date, workout]
   end
+  p workouts
   obj = {workout: workouts}
   return obj.to_json
 end

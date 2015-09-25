@@ -56,11 +56,11 @@ class Workout < ActiveRecord::Base
     bike_accumulator = 0
     # return workouts_to_accumulate
     workouts_to_accumulate.each do |workout|
-      run_accumulator += workout.run
+      run_accumulator += workout.run.round(2)
       @run_accumulation_hash[workout[:date]] = run_accumulator
-      swim_accumulator += workout.swim
+      swim_accumulator += workout.swim.round(2)
       @swim_accumulation_hash[workout[:date]] = swim_accumulator
-      bike_accumulator += workout.bike
+      bike_accumulator += workout.bike.round(2)
       @bike_accumulation_hash[workout[:date]] = bike_accumulator
     end
     return {"run"=> @run_accumulation_hash, "bike"=> @bike_accumulation_hash, "swim"=> @swim_accumulation_hash}

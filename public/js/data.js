@@ -19,6 +19,7 @@ var getCharts = function(e) {
     dataType: 'text'
   }).done(function(d) {
     var url = d
+    $('.chart_div').show()
     drawChart(url + '/run', "Run", "Miles")
     drawChart(url + '/bike', "Bike", "Miles")
     drawChart(url + '/swim', "Swim", "Meters")
@@ -41,10 +42,10 @@ function drawChart(path, title, units) {
     console.log('HIT!' + data)
     var options = {
       title: title,
-      hAxis: {title: 'Date',
+      hAxis: {
               titleTextStyle: {color: '#333'},
               units: {
-                months: {format: ['MM']}
+                pattern: {format: ['M']}
               }
             },
       vAxis: {title: units, minValue: 0}
