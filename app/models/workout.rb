@@ -3,7 +3,16 @@ class Workout < ActiveRecord::Base
 
   validates :date, presence: true
 
-  before_save :validate_times
+  before_save :validate_times, :set_distances
+
+  def set_distances
+    if self.run
+      self.run = self.run.round(1)
+    end
+    if self.bike
+      self.bike = self.bike.round(1)
+    end
+  end
 
   def validate_times
     p "&"*70

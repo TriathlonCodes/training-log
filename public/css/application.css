@@ -67,6 +67,10 @@ input[type="submit"] {
   /*box-shadow: 2px, 2px, 2px, #333;*/
   background-color: #ccc;
 }
+
+#delete-button {
+  float: right;
+}
 /*debugger*/
 /** {
   border: 1px solid red;

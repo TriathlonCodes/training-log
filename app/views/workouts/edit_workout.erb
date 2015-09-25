@@ -1,4 +1,7 @@
 <div class="container">
+  <form id="delete-button" method="get" action="/workouts/<%= current_workout.id %>/delete">
+    <input type="submit" value="Delete Workout">
+  </form>
   <p>Editing the workout you did on <%= @workout.date %>.</p>
   <form method="POST" action="/workouts/<%= @workout.id %>">
     <input type="hidden" name="_method" value="PUT"
@@ -43,7 +46,4 @@
 
   </form>
 
-  <form method="get" action="/workouts/<%= current_workout.id %>/delete">
-    <input type="submit" value="Delete Workout">
-  </form>
 </div>
