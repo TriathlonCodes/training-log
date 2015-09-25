@@ -31,6 +31,6 @@ CSV.open('db/data/training_log_data.csv', headers: true).each do |line|
 
   date = (line["date"])
   parsed_date = ConvertDate::parse_mmddyyyy(date)
-  Workout.create(date: parsed_date, swim: line["swim"].to_i, bike: line["bike"].to_f, run: line["run"].to_f, description: line["description"])
+  Workout.create(date: parsed_date, swim: line["swim"].to_i, bike: line["bike"].texito_f, run: line["run"].to_f, description: line["description"])
 end
 
