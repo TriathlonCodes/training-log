@@ -8,7 +8,7 @@ $(document).ready(function() {
 })
 
 var getCharts = function(e) {
-  e.preventDefault()
+  // e.preventDefault()
   var path = $(this).attr("action")
   var method = $(this).attr("method")
   var data= $(this).serialize()
@@ -19,7 +19,7 @@ var getCharts = function(e) {
     dataType: 'text'
   }).done(function(d) {
     var url = d
-    $('.chart_div').show()
+    $('div.charts').show()
     drawChart(url + '/run', "Run", "Miles")
     drawChart(url + '/bike', "Bike", "Miles")
     drawChart(url + '/swim', "Swim", "Meters")

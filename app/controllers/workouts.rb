@@ -17,9 +17,9 @@ get '/workouts/show' do
   erb :'workouts/show'
 end
 
-get '/workouts/:id' do
-  erb :'/workouts/workout'
-end
+# get '/workouts/:id' do
+#   erb :'/workouts/workout'
+# end
 
 #create
 
