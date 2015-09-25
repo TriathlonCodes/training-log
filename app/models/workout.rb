@@ -28,12 +28,22 @@ class Workout < ActiveRecord::Base
       selected_month = workouts_from_month(params[:month])
       selected = selected & selected_month
     end
+    if params[:sport] != ""
+      sport = params[:sport]
+      boolean = params[:boolean]
+      if params[:boolean] != "" && params[:distance] != 0.0
+        selected_sport = Workout.where("#{sport} #{boolean} ?", params[:distance])
+      else
+        selected_sport = Workout.where(sport + " != 0")
+      end
+      selected = selected & selected_sport
+    end
     # return selected_month & selected_year
     return selected.select {|workout| workout.has_workout_data?}
   end
 
   def self.workouts_from_year(year)
-    Workout.where("date >= ?", "#{year}-01-01").where("date <= ?", "#{year}-12-31")
+    Workout.where("date >= ?", "#{year}-01-01").where("date <= ?", "#{year}-12-31").order(date: :asc, id: :desc)
   end
 
   def self.workouts_from_month(month)

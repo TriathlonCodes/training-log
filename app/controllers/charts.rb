@@ -33,7 +33,7 @@ get '/charts/:year/individual/:sport' do
   year = params[:year]
   sport = params[:sport]
   workouts = [[year, "Distance"]]
-  workouts_from_year(year).each do |workout|
+  Workout.workouts_from_year(year).each do |workout|
     workouts << [workout.date, workout[sport]]
   end
   obj = {workout: workouts}
