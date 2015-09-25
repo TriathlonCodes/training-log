@@ -1,23 +1,8 @@
 $(document).ready(function() {
-  // $("#log > tbody > tr").on("click", function() {
-  //   $(this).css({
-  //     "background-color" : "lightblue"
-  //   })
-  //   $(this).addClass("selected")
-  // })
+
  //not a funtional portion
   $("#create-workout").on("click", getLogForm)
-  // $(".container").on("submit", "#newWorkout", logWorkout) //*** UNCOMMENT! ****
-  $(".selected").on("click", function() {
-    console.log("this is working")
-    $(this).css({
-      "background-color" : "white"
-    });
-    $(this).removeClass("selected")
-  })
-
-
-
+  $(".new_workout").on("submit", "form#newWorkout", logWorkout)
 });
 
 var setDefault = function(e) {
@@ -28,7 +13,8 @@ var setDefault = function(e) {
 var logWorkout = function(e) {
   e.preventDefault()
   console.log("I'm Hit!")
-  $(this).remove()
+  $('#newWorkout').remove()
+  $("#create-workout").show()
   var workoutData = $(this).serializeArray()
   console.log(workoutData)
   var newLogData = $.ajax({
@@ -40,7 +26,7 @@ var logWorkout = function(e) {
   newLogData.done( function(d){
     console.log(d)
     console.log("Post ajax win!")
-    $("#create-workout").show()
+    $('span#table').load(document.URL + ' table.log')
   })
 }
 
@@ -54,7 +40,7 @@ var getLogForm = function(e) {
     dataType:'html',
     });
   form.done( function(d){
-    $(".container").append(d)
+    $(".new_workout").prepend(d)
   });
   form.fail( function(response) {
     console.log("FAILURE")

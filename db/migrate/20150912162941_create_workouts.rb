@@ -1,9 +1,7 @@
 class CreateWorkouts < ActiveRecord::Migration
   def change
     create_table :workouts do |t|
-      t.integer :year
-      t.integer :month
-      t.integer :day
+      t.date :date
       t.integer :swim
       t.float :bike, limit: 2
       t.float :run, limit: 2
