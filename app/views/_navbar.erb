@@ -4,5 +4,5 @@
 <form action='/search' method="get"><input id="search-workouts" type="submit" value="Search Workouts"></form>
 <form action="/workouts" method="get"><input id="return-home" type="submit" value="Return Home"></form>
 <br>
-<h3>Today is <%= Date.today %>, and your last workout was <%= get_last_workout.date %></h3>
+<h3>Today is <%= Date.today %>. <% if Workout.count > 0 %>Your last workout was <%= get_last_workout.date %></h3><% end %>
 
