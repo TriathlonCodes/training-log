@@ -1,7 +1,7 @@
 require 'pry'
 get '/workouts' do
     # p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-  @most_recent_workouts = workouts[0..14]
+  @workouts = workouts[0..14]
   erb :index
 end
 
@@ -15,6 +15,7 @@ get '/workouts/new' do
 end
 
 get '/workouts/show' do
+  @workouts = workouts
   erb :'workouts/show'
 end
 
@@ -49,21 +50,6 @@ end
 get '/workouts/:id/edit' do
   @workout = Workout.find(params[:id])
   erb :'workouts/edit_workout'
-end
-#### WHY ARE ONLY SOME OF THESE UPDATING! ###
-post '/workouts/:id' do
-  Workout.find(params[:id]).update(
-    date: params[:date],
-    swim: params[:swim],
-    bike: params[:bike],
-    run: params[:run],
-    description: params[:description],
-    intensity: params[:intensity],
-    hours_sleep: parms[:hours_sleep].to_int,
-    duration_hours: params[:duration_hours].to_int,
-    duration_seconds: params[:duration_seconds].to_int,
-    duration_minutes: params[:duration_minutes].to_int)
-  redirect '/workouts'
 end
 
 #delete

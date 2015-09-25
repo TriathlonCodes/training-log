@@ -13,7 +13,7 @@ class Workout < ActiveRecord::Base
 
   def self.search_by(params)
     # binding.pry
-    selected = Workout.all
+    selected = Workout.order(date: :asc, id: :desc)
     if params[:year] != ""
       selected_year = workouts_from_year(params[:year])
       selected = selected & selected_year

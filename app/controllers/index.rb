@@ -5,7 +5,7 @@ get '/' do
 end
 
 get '/workouts' do
-  @most_recent_workouts = workouts[0..14]
+  @workouts = workouts[0..14]
   erb :index
 end
 get '/workouts/new' do

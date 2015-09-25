@@ -1,4 +1,5 @@
 <div class="container">
+  <span class="new_workout"></span>
   <h3>Select By:</h3>
   <form method="POST" action="/search">
     <label for="year">Year: </label>
@@ -29,5 +30,5 @@
       <input type="submit" value = "Search for Workouts">
   </form>
 
-  <%= erb :'workouts/workout' %>
+  <%= erb :'workouts/_selected_workout' %>
 </div>
