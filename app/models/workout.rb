@@ -3,6 +3,29 @@ class Workout < ActiveRecord::Base
 
   validates :date, presence: true
 
+  before_save :validate_times
+
+  def validate_times
+    p "&"*70
+    hours = self.duration_hours
+    minutes = self.duration_minutes
+    seconds = self.duration_seconds
+    sleep = self.hours_sleep
+    if hours
+      valid = hours >= 0
+    end
+    if minutes
+      valid = minutes >= 0 && minutes <= 60
+    end
+    if seconds
+      valid = seconds >=0 && seconds <= 60
+    end
+    if sleep
+      valid = sleep >= 0
+    end
+    return valid
+  end
+
   def has_workout_data?
     if self["run"] != 0.0 || self["bike"] != 0.0 || self["swim"] != 0 || self["description"] != nil
       true

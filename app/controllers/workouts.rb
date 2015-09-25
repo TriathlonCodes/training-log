@@ -1,12 +1,10 @@
 require 'pry'
 get '/workouts' do
-    # p "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
   @workouts = workouts[0..14]
   erb :index
 end
 
 get '/workouts/new' do
-  p request
   if request.xhr?
     erb :'workouts/new_workout', layout: false
   else
