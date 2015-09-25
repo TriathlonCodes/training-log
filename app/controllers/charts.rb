@@ -18,9 +18,7 @@ get '/charts/:year/cumulative/:sport' do
   sport = params[:sport]
   workouts = [["Date", "Distance"]]
   acumulations = Workout.cumulative(year)
-  # p acumulations[sport]
   acumulations[sport].each do |date, workout|
-    parse_to_google(date)
     workouts << [date, workout]
   end
   p workouts

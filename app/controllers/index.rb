@@ -75,6 +75,8 @@ get '/workouts/upload' do
 end
 
 post '/workouts/upload' do
-  Workout.upload_excel_data(params[:file])
+  p params
+  p params[:file]
+  upload_excel_data(params[:file])
   redirect '/'
 end

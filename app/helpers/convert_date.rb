@@ -11,18 +11,5 @@ module ConvertDate
   end
 end
 
-module ConvertExcel
-  def excel_to_csv(file)
-
-    p xlsx.info
-  end
-end
-
-
-xlsx = Roo::Spreadsheet.open(ARGV[0])
-p xlsx.sheet(0)
-p xlsx.sheet(0).parse(headers: true)
-p xlsx.sheet(0).header_line
-
 
 

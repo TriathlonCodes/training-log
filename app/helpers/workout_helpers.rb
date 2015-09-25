@@ -35,11 +35,12 @@ helpers do
     Date.parse("#{day}/#{month}/#{year}")
   end
 
-  def parse_to_google(date)
-    # date.month
-    # date.day
-    # date.year
-    # google_date = new
+  def upload_excel_data(file)
+    xlsx = Roo::Spreadsheet.open(file)
+    all_workouts = xlsx.sheet(0).parse(headers: true)
+    all_workouts.each do |workout|
+      Workout.create(date: workout['date'], swim: workout['swim'], bike: workout['bike'], run: workout['run'], description: workout['description'])
+    end
   end
 
 
