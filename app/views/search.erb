@@ -5,8 +5,10 @@
     <label for="year">Year: </label>
     <select name="year">
       <option selected></option>
-      <% all_years.each do |year| %>
-        <option value = "<%= year %>"><%= year %></option>
+      <% if Workout.count > 0 %>
+        <% all_years.each do |year| %>
+          <option value = "<%= year %>"><%= year %></option>
+        <% end %>
       <% end %>
     </select>
     <label for "month">Month: </label>
