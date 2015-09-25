@@ -19,3 +19,4 @@ gem 'bcrypt'
 #CSV parse
 # gem 'csv'
 gem "pry"
+gem "roo"

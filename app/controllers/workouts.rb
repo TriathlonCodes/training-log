@@ -1,5 +1,5 @@
 require 'pry'
-get '/workouts' do
+get '/' do
   @workouts = workouts[0..14]
   erb :index
 end
@@ -39,7 +39,7 @@ post '/workouts' do
   if request.xhr?
       workout.to_json
   else
-    redirect '/workouts'
+    redirect '/'
   end
 end
 

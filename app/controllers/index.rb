@@ -1,13 +1,8 @@
-## read
-get '/' do
-  # @ordered_workouts = Workout.order(date: :desc)
-  redirect '/workouts'
-end
 
 get '/workouts' do
-  @workouts = workouts[0..14]
-  erb :index
+  redirect '/'
 end
+
 get '/workouts/new' do
   p request
   if request.xhr?
@@ -21,9 +16,9 @@ get '/workouts/show' do
   erb :'workouts/show'
 end
 
-get '/workouts/:id' do
-  erb :'/workouts/workout'
-end
+# get '/workouts/:id' do
+#   erb :'/workouts/workout'
+# end
 
 #create
 
@@ -75,3 +70,11 @@ get '/workouts/:id/delete' do
   redirect '/'
 end
 
+get '/workouts/upload' do
+  erb :'upload'
+end
+
+post '/workouts/upload' do
+  Workout.upload_excel_data(params[:file])
+  redirect '/'
+end

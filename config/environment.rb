@@ -21,6 +21,10 @@ require "sinatra/reloader" if development?
 require 'erb'
 require 'csv'
 require 'pry'
+require 'roo'
+
+
+require_relative '../app/helpers/convert_date'
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 

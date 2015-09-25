@@ -1,4 +1,9 @@
 require 'pry'
+require 'csv'
+require 'date'
+# require_relative 'convert_date'
+# require 'roo'
+
 class Workout < ActiveRecord::Base
 
   validates :date, presence: true
@@ -107,10 +112,19 @@ class Workout < ActiveRecord::Base
     end
     return {"run"=> @run_accumulation_hash, "bike"=> @bike_accumulation_hash, "swim"=> @swim_accumulation_hash}
   end
+  def self.upload_exel_data(file)
+    xlsx = Roo::Spreadsheet.open(file)
+    all_workouts = xlsx.sheet(0).parse(header: true)
+    all_workouts.each do |workout|
+      Workout.create(date: workout_hash['date'], swim: workout_hash['swim'], bike: workout_hash['bike'], run: workout_hash['run'], description: workout_hash['description'])
+    end
+  end
 end
 
 
-
+# date = (line["date"])
+#   parsed_date = ConvertDate::parse_mmddyyyy(date)
+#   Workout.create(date: parsed_date, swim: line["swim"].to_i, bike: line["bike"].to_f, run: line["run"].to_f, description: line["description"])
 
 
 
