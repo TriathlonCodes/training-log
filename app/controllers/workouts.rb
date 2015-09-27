@@ -1,4 +1,9 @@
 require 'pry'
+
+before '/*' do
+  params[:athlete_id] = session[:athlete]
+end
+
 get '/' do
   @workouts = workouts[0..14]
   erb :index

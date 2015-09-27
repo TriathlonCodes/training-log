@@ -5,7 +5,7 @@ require 'date'
 require 'roo'
 
 class Workout < ActiveRecord::Base
-
+  belongs_to :athlete
   validates :date, presence: true
 
   before_save :validate_times, :set_distances
