@@ -1,23 +1,8 @@
 ### SignIn
 
-get '/' do
-  erb :index
-end
-
-get '/login' do
-  erb :login
-end
-
-post '/login' do
-  athlete = Athlete.find_by(athlete: params[:athlete])
-  if athlete && athlete.password == params[:password]
-    session[:athlete] = athlete.id
-  end
-  redirect '/'
-end
 
 get '/signup' do
-  erb :signup
+  erb :'users/signup'
 end
 
 post '/signup' do
@@ -25,6 +10,20 @@ post '/signup' do
   session[:athlete] = @athlete.id
   redirect '/'
 end
+
+get '/login' do
+  erb :'users/login'
+end
+
+post '/login' do
+
+  athlete = Athlete.where(username: params[:username]).first
+  if athlete && athlete.password == params[:password]
+    session[:athlete] = athlete.id
+  end
+  redirect '/'
+end
+
 
 get '/logout' do
   session[:athlete] = nil

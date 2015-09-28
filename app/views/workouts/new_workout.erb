@@ -1,5 +1,6 @@
 <!-- <div class="container"> -->
   <form id="newWorkout" method="POST" action="/workouts">
+    <input type="hidden" name="athlete_id" value="<%= athlete %>">
     <label for="date">Date: </label>
     <input type="date" name="date" value = "<%= Date.today %>">
     <br>

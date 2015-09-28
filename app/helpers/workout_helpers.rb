@@ -1,6 +1,11 @@
 helpers do
+
+  def athlete
+    Athlete.where(:id, params[:athlete]).first
+  end
+
   def get_last_workout
-    workouts = Workout.order(date: :desc, id: :desc).all
+    workouts = Workout.where(athlete_id: session[:athlete]).order(date: :desc, id: :desc).all
     workouts.each do |workout|
       return workout if workout.has_workout_data?
     end
@@ -8,14 +13,14 @@ helpers do
 
 
   def workouts
-    Workout.order(date: :desc, id: :desc).select{ |workout|
-      workout.has_workout_data?
+    Workout.where(athlete_id: session[:athlete]).order(date: :desc, id: :desc).select{ |workout|
+     workout.has_workout_data?
     }
 
   end
 
   def current_workout
-    Workout.where(id: params[:id]).first
+    Workout.where(id: params[:id], athlete_id: session[:athlete]).first
   end
 
   def the_last_365_days
@@ -39,7 +44,7 @@ helpers do
     xlsx = Roo::Spreadsheet.open(file)
     all_workouts = xlsx.sheet(0).parse(headers: true)
     all_workouts.each do |workout|
-      Workout.create(date: workout['date'], swim: workout['swim'], bike: workout['bike'], run: workout['run'], description: workout['description'])
+      Workout.create(athlete_id: session[:athlete], date: workout['date'], swim: workout['swim'], bike: workout['bike'], run: workout['run'], description: workout['description'])
     end
   end
 

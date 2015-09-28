@@ -18,7 +18,10 @@ class Athlete < ActiveRecord::Base
   def create(params)
     athlete = Athlete.new(params[:athlete])
     athlete.password = params[:password]
-    athlete.save!
-    return athlete
+    if athlete.save!
+      return athlete
+    else
+      redirect '/signup'
+    end
   end
 end
