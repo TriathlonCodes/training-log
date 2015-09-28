@@ -20,12 +20,12 @@ helpers do
   end
 
   def current_workout
-    Workout.where(id: params[:id], athlete_id: session[:athlete]).first
+    Workout.where(id: params[:id]).first
   end
 
-  def the_last_365_days
-    Workout.where("date < ?", Date.today)[-365..-1]
-  end
+  # def the_last_365_days
+  #   Workout.where(athlete_id: session[:athlete], "date < ?", Date.today)[-365..-1]
+  # end
 
   def all_years
     first_year = workouts[-1].date.year
