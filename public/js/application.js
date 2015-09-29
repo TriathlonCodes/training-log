@@ -21,7 +21,7 @@ $(document).ready(function() {
 //   })
 
   // will set the default of a selected list to what has already been selected in a EDIT method
-}
+// }
 
 var logWorkout = function(e) {
   e.preventDefault()
