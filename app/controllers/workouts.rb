@@ -52,7 +52,7 @@ end
 
 get '/workouts/:id/edit' do
   @workout = Workout.find(params[:id])
-  if @workout.athlete == session[:athlete]
+  if @workout.athlete == session[:athlete_id]
     p "hit"
     erb :'workouts/edit_workout'
   else

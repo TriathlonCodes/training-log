@@ -1,4 +1,4 @@
-<% if session[:athlete] %>
+<% if session[:athlete_id] %>
 
 <form action="/" method="post"><input id='create-workout' type="submit" value="Log a workout"></form>
 <form action="/workouts/show" method="get"><input id='all-workouts-nav' type="submit" value="View All Workouts"></form>
@@ -8,7 +8,7 @@
 <form action="/workouts" method="get"><input id="return-home" type="submit" value="Return Home"></form>
 <form action='/logout' method="get"><input id='logout-button' type="submit" value="Logout"></form>
 <br>
-<h3>Today is <%= Date.today %>. <% if Workout.count > 0 %>Your last workout was <%= get_last_workout.date %></h3><% end %>
+<h3>Today is <%= Date.today %>. <% if workouts.length > 0 %>Your last workout was <%= get_last_workout.date %></h3><% end %>
 
 <% else %>
 

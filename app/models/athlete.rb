@@ -2,7 +2,7 @@ require 'bcrypt'
 class Athlete < ActiveRecord::Base
   # Remember to create a migration!
   has_many :workouts
-  validates :username, uniqueness: true
+  validates :email, uniqueness: true
 
   include BCrypt
 
@@ -16,7 +16,7 @@ class Athlete < ActiveRecord::Base
   end
 
   def create(params)
-    athlete = Athlete.new(params[:athlete])
+    athlete = Athlete.new(params[:athlete_id])
     athlete.password = params[:password]
     if athlete.save!
       return athlete

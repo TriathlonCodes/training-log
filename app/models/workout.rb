@@ -55,10 +55,12 @@ class Workout < ActiveRecord::Base
     end
   end
 
-  def self.search_by(params)
+  def self.search_by(params, athlete_id)
     # binding.pry
     # p session[:athlete]
-    selected = Workout.where(athlete: session[:athlete]).order(date: :asc, id: :desc)
+    p athlete_id
+    selected = Workout.where(athlete_id: athlete_id).order(date: :asc, id: :desc)
+    p selected
     if params[:year] != ""
       selected_year = workouts_from_year(params[:year])
       selected = selected & selected_year
@@ -93,15 +95,15 @@ class Workout < ActiveRecord::Base
 
   def self.workouts_from_month(month)
     selected = []
-    Workout.where(athlete_id: session[:athlete]).each {|workout|
+    Workout.all.each {|workout|
       if workout.date.month == month.to_i
         selected << workout
       end
     }
     return selected
   end
-  def self.cumulative(year)
-    workouts_to_accumulate= Workout.workouts_from_year(year).order(date: :asc, id: :desc)
+  def self.cumulative(year, athlete_id)
+    workouts_to_accumulate= Workout.where(athlete_id: athlete_id).workouts_from_year(year).order(date: :asc, id: :desc)
     p workouts_to_accumulate
     @run_accumulation_hash = {}
     run_accumulator = 0

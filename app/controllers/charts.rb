@@ -1,4 +1,6 @@
-
+before '/charts/*' do
+  @athlete_id = session[:athlete_id]
+end
 
 require 'date'
 get '/charts' do
@@ -17,11 +19,12 @@ get '/charts/:year/cumulative/:sport' do
   year = params[:year]
   sport = params[:sport]
   workouts = [["Date", "Distance"]]
-  acumulations = Workout.cumulative(year)
+  # athlete_id = session[:athlete_id]
+  acumulations = Workout.cumulative(year, @athlete_id)
   acumulations[sport].each do |date, workout|
     workouts << [date, workout]
   end
-  p workouts
+  # p workouts
   obj = {workout: workouts}
   return obj.to_json
 end
@@ -31,7 +34,7 @@ get '/charts/:year/individual/:sport' do
   year = params[:year]
   sport = params[:sport]
   workouts = [[year, "Distance"]]
-  Workout.workouts_from_year(year).each do |workout|
+  Workout.where(athlete_id: @athlete_id).workouts_from_year(year).each do |workout|
     workouts << [workout.date, workout[sport]]
   end
   obj = {workout: workouts}

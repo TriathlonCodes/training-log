@@ -5,15 +5,18 @@ helpers do
   end
 
   def get_last_workout
-    workouts = Workout.where(athlete_id: session[:athlete]).order(date: :desc, id: :desc).all
+    workouts = Workout.where(athlete_id: session[:athlete_id]).order(date: :desc, id: :desc).all
     workouts.each do |workout|
-      return workout if workout.has_workout_data?
+      if workout.has_workout_data?
+        p "this should only be one"
+        return workout
+      end
     end
   end
 
 
   def workouts
-    Workout.where(athlete_id: session[:athlete]).order(date: :desc, id: :desc).select{ |workout|
+    Workout.where(athlete_id: session[:athlete_id]).order(date: :desc, id: :desc).select{ |workout|
      workout.has_workout_data?
     }
 
@@ -44,7 +47,7 @@ helpers do
     xlsx = Roo::Spreadsheet.open(file)
     all_workouts = xlsx.sheet(0).parse(headers: true)
     all_workouts.each do |workout|
-      Workout.create(athlete_id: session[:athlete], date: workout['date'], swim: workout['swim'], bike: workout['bike'], run: workout['run'], description: workout['description'])
+      Workout.create(athlete_id: session[:athlete_id], date: workout['date'], swim: workout['swim'], bike: workout['bike'], run: workout['run'], description: workout['description'])
     end
   end
 

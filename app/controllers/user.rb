@@ -7,7 +7,7 @@ end
 
 post '/signup' do
   @athlete = Athlete.create(params)
-  session[:athlete] = @athlete.id
+  session[:athlete_id] = @athlete.id
   redirect '/'
 end
 
@@ -16,21 +16,21 @@ get '/login' do
 end
 
 post '/login' do
-
-  athlete = Athlete.where(username: params[:username]).first
+  athlete = Athlete.where(email: params[:email]).first
   if athlete && athlete.password == params[:password]
-    session[:athlete] = athlete.id
+    p "THIS SHOULD WORK"
+    session[:athlete_id] = athlete.id
   end
   redirect '/'
 end
 
 
 get '/logout' do
-  session[:athlete] = nil
+  session[:athlete_id] = nil
   redirect '/'
 end
 
 get '/delete-account' do
-  Athlete.find(session[:athlete]).destroy
+  Athlete.find(session[:athlete_id]).destroy
   redirect '/'
 end
