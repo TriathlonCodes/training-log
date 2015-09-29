@@ -8,7 +8,7 @@
   <label for="Year">Year</label>
   <select name="year">
     <option value="select-year">Select Year</option>
-    <% if Workout.count > 0 %>
+    <% if workouts.length > 0 %>
       <% all_years.each do |year| %>
         <option value = "<%= year %>"><%= year %></option>
       <% end %>

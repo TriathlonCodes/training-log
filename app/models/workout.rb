@@ -5,7 +5,7 @@ require 'date'
 require 'roo'
 
 class Workout < ActiveRecord::Base
-
+  belongs_to :athlete
   validates :date, presence: true
 
   before_save :validate_times, :set_distances
@@ -55,9 +55,12 @@ class Workout < ActiveRecord::Base
     end
   end
 
-  def self.search_by(params)
+  def self.search_by(params, athlete_id)
     # binding.pry
-    selected = Workout.order(date: :asc, id: :desc)
+    # p session[:athlete]
+    p athlete_id
+    selected = Workout.where(athlete_id: athlete_id).order(date: :asc, id: :desc)
+    p selected
     if params[:year] != ""
       selected_year = workouts_from_year(params[:year])
       selected = selected & selected_year
@@ -99,8 +102,8 @@ class Workout < ActiveRecord::Base
     }
     return selected
   end
-  def self.cumulative(year)
-    workouts_to_accumulate= Workout.workouts_from_year(year).order(date: :asc, id: :desc)
+  def self.cumulative(year, athlete_id)
+    workouts_to_accumulate= Workout.where(athlete_id: athlete_id).workouts_from_year(year).order(date: :asc, id: :desc)
     p workouts_to_accumulate
     @run_accumulation_hash = {}
     run_accumulator = 0

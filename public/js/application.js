@@ -3,10 +3,23 @@ $(document).ready(function() {
  //not a funtional portion
   $("#create-workout").on("click", getLogForm)
   $(".new_workout").on("submit", "form#newWorkout", logWorkout)
+  // $('#upload-form').on("submit", waitMessage)
 });
 
-var setDefault = function(e) {
-  e.preventDefault
+
+
+// var waitMessage = function(e) {
+//   console.log("hit the button")
+//   e.preventDefault()
+//   $('.waiting').show()
+//   var data = $(this).serialize()
+//   console.log(data)
+//   $.ajax({
+//     url: '/workouts/upload',
+//     method: 'post',
+//     data: data
+//   })
+
   // will set the default of a selected list to what has already been selected in a EDIT method
 }
 
