@@ -11,6 +11,7 @@ class CreateWorkouts < ActiveRecord::Migration
       t.integer :duration_hours
       t.integer :duration_minutes
       t.integer :duration_seconds
+      t.references :athlete
       t.timestamps(null: false)
     end
   end

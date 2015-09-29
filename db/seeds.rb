@@ -34,4 +34,4 @@ include ConvertDate
 #   Workout.create(date: parsed_date, swim: line["swim"].to_i, bike: line["bike"].to_f, run: line["run"].to_f, description: line["description"])
 # end
 
-Workout.create(date: Date.today, run: 3)
+# Workout.create(date: Date.today, run: 3)

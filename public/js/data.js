@@ -30,16 +30,16 @@ var getCharts = function(e) {
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
 function drawChart(path, title, units) {
-  console.log(path)
+  // console.log(path)
   $.ajax({
     url: path,
     dataType: 'json'
   }).done(function(workout_data) {
-    console.log(workout_data.workout)
+    // console.log(workout_data.workout)
     var data = google.visualization.arrayToDataTable(
       workout_data.workout);
 
-    console.log('HIT!' + data)
+    // console.log('HIT!' + data)
     var options = {
       title: title,
       hAxis: {

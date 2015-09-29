@@ -1,6 +1,11 @@
 require 'pry'
+
+# before '/*' do
+#   params[:athlete_id] = session[:athlete]
+# end
+
 get '/' do
-  @workouts = workouts[0..14]
+  @workouts = workouts
   erb :index
 end
 
@@ -47,7 +52,13 @@ end
 
 get '/workouts/:id/edit' do
   @workout = Workout.find(params[:id])
-  erb :'workouts/edit_workout'
+  if @workout.athlete == session[:athlete_id]
+    p "hit"
+    erb :'workouts/edit_workout'
+  else
+    p "NOT"
+    redirect '/workouts'
+  end
 end
 
 #delete

@@ -5,6 +5,7 @@ end
 
 get '/workouts/new' do
   p request
+  @athlete_id = session[:athlete_id]
   if request.xhr?
     erb :'workouts/new_workout', layout: false
   else
