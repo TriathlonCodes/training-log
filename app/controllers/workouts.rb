@@ -5,7 +5,7 @@ require 'pry'
 # end
 
 get '/' do
-  @workouts = workouts
+  @workouts = workouts[0..15]
   erb :index
 end
 
