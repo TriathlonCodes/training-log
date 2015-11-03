@@ -1,5 +1,5 @@
 ### SignIn
-
+require 'Date'
 
 get '/signup' do
   erb :'users/signup'
@@ -18,8 +18,9 @@ end
 post '/login' do
   athlete = Athlete.where(email: params[:email]).first
   if athlete && athlete.password == params[:password]
-    p "THIS SHOULD WORK"
+    # p "THIS SHOULD WORK"
     session[:athlete_id] = athlete.id
+    athlete.last_login = Date.today
   end
   redirect '/'
 end

@@ -44,10 +44,14 @@ helpers do
   end
 
   def upload_excel_data(file)
-    xlsx = Roo::Spreadsheet.open(file)
-    all_workouts = xlsx.sheet(0).parse(headers: true)
-    all_workouts.each do |workout|
-      Workout.create(athlete_id: session[:athlete_id], date: workout['date'], swim: workout['swim'], bike: workout['bike'], run: workout['run'], description: workout['description'])
+    if /xls/ =~ file
+      xlsx = Roo::Spreadsheet.open(file)
+      all_workouts = xlsx.sheet(0).parse(headers: true)
+      all_workouts.each do |workout|
+        Workout.create(athlete_id: session[:athlete_id], date: workout['date'], swim: workout['swim'], bike: workout['bike'], run: workout['run'], description: workout['description'])
+      end
+    else
+      return false
     end
   end
 

@@ -1,5 +1,6 @@
 <div class="container transbox">
   <span class="new_workout"></span>
+  <span class="error-message"><% if @error %><p><%= @error %></p><% end %></span>
   <h2>Add Your Own Workout Data</h2>
   <form id="upload-form" action='/workouts/upload' method = 'post'>
     <label for="file">Upload your Excel file</label>
@@ -8,4 +9,22 @@
   </form>
   <br>
   <span class="waiting">Thank you for your patience, this may take a while</span>
+  <div class="container transbox">
+    <h3>How to Format your xls file:</h3>
+    <ul>
+      <li>add titles to your columns: date, swim, bike, run, description. the order of your columns do not matter*</li>
+      <li>the file must be an .xls or .xlsx file (excel)</li>
+
+    <table>
+      <thead>
+        <td>date</td>
+        <td>swim</td>
+        <td>bike</td>
+        <td>run</td>
+        <td>description</td>
+      </thead>
+    </table>
+    <p>* Note: these are the only columns that will be read. Using the search function you may add and edit information about your workouts after you upload.
+  </div>
+
 </div>
