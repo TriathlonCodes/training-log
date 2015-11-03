@@ -1,6 +1,11 @@
 <div class ='container'>
   <% Athlete.all.each do |user|%>
-    <p><%= user.email %></p>
+    <p>Athlete: <%= user.name %></p>
     <ul>
+      <li>Email: <%= user.email %></li>
+      <li>Birth Year: <%= user.birthyear %></li>
+      <li>Last Login: <%= user.last_login %></li>
+      <li>Workouts Logged: <%= user.workouts.count %></li>
+    </ul>
   <% end %>
 </div>

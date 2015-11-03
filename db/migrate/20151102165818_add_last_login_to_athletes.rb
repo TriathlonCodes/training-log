@@ -1,7 +1,8 @@
 class AddLastLoginToAthletes < ActiveRecord::Migration
   def change
     change_table :athletes do |t|
-      t.date :last_login
+      t.datetime :last_login
+      t.logins :int
     end
   end
 end
