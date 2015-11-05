@@ -1,0 +1,18 @@
+<div class ='container' id="adminPage">
+  <h3>Collective Athletes</h3>
+  <ul>
+    <li>Total Athletes: <%= Athlete.count %></li>
+  </ul>
+
+
+  <h3>Individual Athletes</h3>
+  <% Athlete.all.each do |user|%>
+    <p>Athlete: <%= user.name %></p>
+    <ul>
+      <li>Email: <%= user.email %></li>
+      <li>Birth Year: <%= user.birthyear %></li>
+      <li>Last Login: <%= user.last_login %></li>
+      <li>Workouts Logged: <%= user.workouts.count %></li>
+    </ul>
+  <% end %>
+</div>

@@ -5,6 +5,7 @@ $(document).ready(function() {
   // drawChart('/charts/last_year/swim', 'Swim','Meters')
   $("#select_charts_form").change(getCharts)
 
+
 })
 
 var getCharts = function(e) {

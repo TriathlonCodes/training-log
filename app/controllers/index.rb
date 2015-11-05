@@ -3,8 +3,12 @@ get '/workouts' do
   redirect '/'
 end
 
+get '/' do
+  @workouts = workouts[0..15]
+  erb :index
+end
+
 get '/workouts/new' do
-  p request
   @athlete_id = session[:athlete_id]
   if request.xhr?
     erb :'workouts/new_workout', layout: false
@@ -13,8 +17,8 @@ get '/workouts/new' do
   end
 end
 
-get '/workouts/show' do
-  erb :'workouts/show'
+get '/workouts/show-all' do
+  erb :'workouts/show_all'
 end
 
 # get '/workouts/:id' do
@@ -24,13 +28,8 @@ end
 #create
 
 post '/workouts' do
-  # if @params.has_workout_data?
-
   workout = Workout.create(@params)
-  # else
-    # puts "This is an empty workout"
-    # workout = nil
-  # end
+
   if request.xhr?
       workout.to_json
   else
@@ -47,8 +46,6 @@ end
 
 put '/workouts/:id' do
   ##maybe there is a better way? getting errors with :splat
-  # params[:date] = params[:date][5..6]+ "/"+params[:date][-2..-1]+"/"+params[:date][0..3]
-  # params[:date] = params["month"]+"/"+params["day"]+"/"+params["year"]
   Workout.find(params[:id]).update(
     date: params[:date],
     swim: params[:swim],
@@ -76,8 +73,10 @@ get '/workouts/upload' do
 end
 
 post '/workouts/upload' do
-  p params
-  p params[:file]
-  upload_excel_data(params[:file])
-  redirect '/'
+  if upload_excel_data(params[:file])
+    redirect '/'
+  else
+    @error = "Error: your file did not upload properly. Please make sure you are following the instructions"
+    erb :'upload'
+  end
 end
