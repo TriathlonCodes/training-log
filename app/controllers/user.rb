@@ -20,7 +20,7 @@ post '/login' do
   if athlete && athlete.password == params[:password]
     # p "THIS SHOULD WORK"
     session[:athlete_id] = athlete.id
-    athlete.update(last_login: DateTime.now, logins: athlete.logins + 1)
+    athlete.update(last_login: DateTime.now)
   end
   redirect '/'
 end
