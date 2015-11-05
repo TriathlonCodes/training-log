@@ -6,23 +6,6 @@ $(document).ready(function() {
   // $('#upload-form').on("submit", waitMessage)
 });
 
-
-
-// var waitMessage = function(e) {
-//   console.log("hit the button")
-//   e.preventDefault()
-//   $('.waiting').show()
-//   var data = $(this).serialize()
-//   console.log(data)
-//   $.ajax({
-//     url: '/workouts/upload',
-//     method: 'post',
-//     data: data
-//   })
-
-  // will set the default of a selected list to what has already been selected in a EDIT method
-}
-
 var logWorkout = function(e) {
   e.preventDefault()
   console.log("I'm Hit!")
